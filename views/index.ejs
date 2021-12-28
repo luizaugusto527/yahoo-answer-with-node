@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Yahoo Resposta com NodeJS</title>
+</head>
+<body>
+    <h1>Bem vindo ao Yahoo respostas</h1>
+
+    <!-- exibir variáveis no ejs -->
+    <p>Nome: <%= nome %></p>
+    <p>Linguagem Favorita: <%= lang %></p>
+<% if(msg){ %>
+
+    <h3>Isso é um msg de erro!</h3>
+<%} else{ %>
+
+    <h3>Tudo certo!</h3>
+<%}%>
+<hr>
+
+<% produtos.forEach(function(produto){ %>
+    <p>Nome: <%= produto.nome %></p>
+    <p>Preço: <%= produto.preco %></p>
+    <hr>
+<%}) %>
+
+
+</body>
+</html>
