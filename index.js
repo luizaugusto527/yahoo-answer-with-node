@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const connection = require("./data/database")
+const perguntaModel = require('./data/Pergunta')
 
 connection.authenticate().then(()=>{
     console.log("conecxão feita com sucesso")
