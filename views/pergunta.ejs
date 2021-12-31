@@ -6,13 +6,23 @@
         <h1><%= pergunta.titulo %></h1>
         <p><%= pergunta.descricao %></p>
         <hr>
-        <form action="">
+        <form action="/responder" method="post">
             <h3>Responda</h3>
             <label for="resposta">Resposta</label>
             <textarea class="form-control" placeholder="Digite aqui a sua resposta" name="corpo" id="resposta"></textarea>
             <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
             <button class="btn btn-primary mt-3">Responder</button>
         </form>
+        <hr>
+        <h3>Respostas</h3>
+        <hr>
+        <% respostas.forEach(resposta =>{%>
+            <div class="card">
+                <div class="card-body">
+                    <p><%= resposta.corpo %></p>
+                </div>
+            </div>
+        <%})%>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
