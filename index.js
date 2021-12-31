@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express();
+
 const connection = require("./data/database")
 const Pergunta = require('./data/Pergunta')
+const Resposta = require('./data/Resposta')
 
 connection.authenticate().then(()=>{
     console.log("conexão feita com sucesso")
@@ -9,7 +11,6 @@ connection.authenticate().then(()=>{
 
 app.set('view engine','ejs')
 app.use(express.static('public'))
-
 app.use(express.urlencoded({extended:true}))
 
 app.get("/", (req,res) => {
@@ -37,7 +38,20 @@ app.post('/salvarpergunta',(req,res)=>{
         res.redirect("/");
     })
 })
-
+app.get('/pergunta/:id',(req,res)=>{
+    let id = req.params.id
+    Pergunta.findOne({
+        where:{id:id}
+    }).then(pergunta =>{
+        if(pergunta != undefined){
+            res.render('pergunta',{
+                pergunta:pergunta
+            })
+        }else{
+            res.redirect('/')
+        }
+    })
+})
 app.listen(8081, () => {
     console.log("Servidor rodando");
 })
